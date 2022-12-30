@@ -1,0 +1,45 @@
+ALGORITHM checkpoint
+VAR
+    set1: ARRAY_OF INTEGER[n1];
+    set2: ARRAY_OF INTEGER[n2];
+    set: ARRAY_OF INTEGER[n1+n2];
+    i,j,k,l,n1,n2,SUM: INTEGER;
+    overlap:BOOLEAN;
+
+BEGIN
+set1:=0;
+set2:=0;
+set:=0;
+SUM:=0;
+overlap:=False;
+
+    Write ("Entrer le nombre d'els de SET1");
+    Read (n1);
+    Write ("Entrer l'el")
+    FOR i FROM 1 TO n1
+       set1[i] := set1[i] + 1; 
+    END_FOR
+
+    Write ("Entrer le nombre d'els de SET2");
+    Read (n2);
+    Write ("Entrer l'el")
+    FOR i FROM 1 TO n2
+       set2[i] := set2[i] + 1; 
+    END_FOR
+
+    set := concat(set1,set2);
+
+    FOR k FROM 1 TO n1+n2
+
+        FOR l FROM 2 TO n1+n2
+            IF (set[l]==set[k]) THEN
+                SUM:= SUM + set[l];
+            END_IF
+
+        END_FOR
+
+    END_FOR
+    
+    Write (" Sum of overlapping elements is ",SUM)
+
+END
